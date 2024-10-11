@@ -1,72 +1,107 @@
 # prompts.py
 
-# 1. Data Collection Prompt
 def data_collection_prompt(health_history, family_history, medical_history, living_style):
+    """
+    Generates a prompt for data collection analysis based on provided health details.
+    """
     return f"""
-    The user has provided their health, family, and medical history. Please analyze the following data:
+    Perform a detailed analysis based on the following data:
     - Health History: {health_history}
     - Family History: {family_history}
     - Medical History: {medical_history}
     - Living Style: {living_style}
-    Use this data to identify potential health risks, conditions to monitor, and lifestyle adjustments.
+    
+    Provide a summary and insights on the patient's current health status.
     """
 
-# 2. Health Assessment Prompt
 def health_assessment_prompt(health_history, family_history, medical_history, living_style):
+    """
+    Generates a prompt for health assessment based on the provided user input.
+    """
     return f"""
-    Based on the patient's health history, family history, and lifestyle, provide a comprehensive health assessment.
+    Given the following data:
     - Health History: {health_history}
     - Family History: {family_history}
     - Medical History: {medical_history}
     - Living Style: {living_style}
-    Consider potential health risks and provide recommendations for improvement.
+    
+    Provide a health assessment that includes risks, suggestions for improvement, and any necessary follow-ups.
     """
 
-# 3. Health Awareness Prompt
 def health_awareness_prompt(name, age, health_goal):
+    """
+    Generates a prompt for personalized health tips based on user's age and health goals.
+    """
     return f"""
-    Provide personalized health tips for {name}, age {age}, whose goal is {health_goal}. Tailor these tips to their 
-    current health status and lifestyle.
+    Provide personalized health tips for the following individual:
+    - Name: {name}
+    - Age: {age}
+    - Health Goal: {health_goal}
+    
+    The tips should focus on achieving the specified health goal, while considering age-related health factors.
     """
 
-# 4. Counseling Prompt
 def counseling_prompt(question):
-    return f"Counsel the user on: {question}. Think deeply through the issue and offer holistic advice."
+    """
+    Generates a counseling prompt based on the user's question.
+    """
+    return f"""
+    Provide counseling advice for the following question:
+    - Question: {question}
+    
+    The advice should be detailed and address the user's concerns in a supportive and informative manner.
+    """
 
-# 5. Advocacy Prompt
 def advocacy_prompt():
+    """
+    Generates a prompt for advocacy resources.
+    """
     return """
-    Provide the user with tailored advocacy resources on their healthcare rights. Explain patient rights, informed 
-    consent, and how to navigate healthcare systems effectively.
+    Provide a list of advocacy resources and explain how they can support patients in terms of health rights, social support, and access to healthcare services.
     """
 
-# 6. Family Planning Prompt
 def family_planning_prompt(health_history, family_history, medical_history):
+    """
+    Generates a prompt for family planning advice based on user health details.
+    """
     return f"""
-    Considering the user's health, family, and medical history, provide personalized family planning advice. Discuss 
-    contraceptive options and reproductive health based on their unique health profile.
+    Based on the following information:
+    - Health History: {health_history}
+    - Family History: {family_history}
+    - Medical History: {medical_history}
+    
+    Provide detailed family planning advice, including potential risks and recommendations.
     """
 
-# 7. Sexual Education Prompt
 def sexual_education_prompt(sex_question):
-    return f"Provide a comprehensive answer to the user's sexual education question: {sex_question}"
-
-# 8. Community Visits Prompt
-def community_visits_prompt(location):
+    """
+    Generates a prompt for sexual education based on the user's question.
+    """
     return f"""
-    The user has requested a community health visit in {location}. Plan how the visit could benefit the user's health 
-    based on their background data, and explain what services they might expect during the visit.
+    Provide an accurate and clear answer to the following sexual education question:
+    - Question: {sex_question}
+    
+    Ensure that the information is appropriate, scientifically accurate, and helps the user understand the topic.
     """
 
-# General Error Handling Prompt
-def error_handling_prompt():
-    return "Please provide the missing information to generate an accurate response."
+def community_visits_prompt(location):
+    """
+    Generates a prompt for planning a community visit based on the specified location.
+    """
+    return f"""
+    Plan a community health visit for the following location:
+    - Location: {location}
+    
+    Include details such as healthcare services that can be provided, outreach strategies, and the impact on community health.
+    """
 
-# ---- Report Analyzer Prompts ----
-
-# 9. Medical Report Data Extraction Prompt
 def report_extraction_prompt():
-    return """I have a medical report containing various test results. Please extract and organize all the details mentioned in the report, including the following parameters:
+    """
+    Generates a prompt for extracting data from a medical report.
+    """
+    return """
+    Analyze the uploaded medical report and extract important data such as test names, results, and normal ranges.
+    Please extract and organize all the details mentioned in the report, including the following parameters:
 
 1. Patient's Name
 2. Age
@@ -92,23 +127,24 @@ def report_extraction_prompt():
 The report is structured as follows:
 - Header with patient details (Name, Age, Gender, Registration Date, and Report Date)
 - Test section listing various blood count parameters with observed values and reference ranges.
-- Please extract and organize the details in the following tabular format:
-    
-    | Test Name          | Result   | Normal Range   |
-    |--------------------|----------|----------------|
-"""
+- Present the extracted data in a structured, tabular format.
+    """
 
-# 10. Medical Report Analysis Prompt
 def report_analysis_prompt(extracted_report):
+    """
+    Generates a prompt for analyzing the extracted data from a medical report.
+    """
     return f"""
-     
-    You are a professional doctor reviewing the following Complete Blood Count (CBC) report details: {extracted_report}
+    Based on the following extracted report data:
+    {extracted_report}
+    
+    Perform a detailed analysis and provide insights. Include any abnormal results, potential health risks, summary and recommendations for follow-up tests or treatments.
+    """
 
-    Step-by-step, perform a thorough analysis of this CBC report by focusing on key components such as White Blood Cell count, Red Blood Cell count, Hemoglobin levels, Hematocrit percentage, Platelet count, and any other relevant indices. Identify any abnormalities or significant findings in these parameters.
-
-    Based on your analysis:
-    1. Provide a detailed summary of the patient's current health status.
-    2. Offer specific recommendations for lifestyle and dietary improvements that could help optimize their blood health and overall well-being.
-
-    Ensure your response is comprehensive yet clear, maintaining professional language suitable for communicating with both healthcare professionals and patients."""
-
+def error_handling_prompt():
+    """
+    Generates a prompt for handling errors and guiding users through corrections.
+    """
+    return """
+    If an error occurs during data extraction or report analysis, explain it to the user clearly and provide steps to correct the issue. Offer suggestions for improving the input or report quality.
+    """

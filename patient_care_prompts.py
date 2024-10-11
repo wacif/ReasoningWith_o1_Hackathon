@@ -96,9 +96,7 @@ def community_visits_prompt(location):
     """
 
 def report_extraction_prompt():
-    """
-    Generates a prompt for extracting data from a medical report.
-    """
+
     return """
     Analyze the uploaded medical report and extract important data such as test names, results, and normal ranges.
     Please extract and organize all the details mentioned in the report, including the following parameters:
